@@ -12,13 +12,7 @@ import java.util.Collection;
 
 @RunWith(Parameterized.class)
 public class MainPageTests extends BaseTest {
-    private MainPage mainPage;
     private String elementName;
-
-    @Before
-    public void initStep() {
-        mainPage = new MainPage(driver);
-    }
 
     public MainPageTests(String elementName) {
         this.elementName = elementName;
