@@ -1,5 +1,6 @@
 package ui.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,8 +12,10 @@ public class FormsPage {
             + "cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e\")";
     private String backgroundSuccessImageUrl = "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'"
             + " viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e\")";
+
     private final By practiceForm = By.xpath("//span[normalize-space()='Practice Form']");
     private final By firstName = By.id("firstName");
+    private final By lastName = By.id("lastName");
     private final By submitButton = By.xpath("//*[@id='submit']");
 
     public FormsPage(WebDriver driver) {
@@ -23,14 +26,24 @@ public class FormsPage {
         return driver.findElement(practiceForm);
     }
 
+    @Step("Вводим имя в поле name")
     public void inputName(String name) {
         driver.findElement(firstName).sendKeys(name);
+    }
+
+    @Step("Вводим фамилию в поле last name")
+    public void inputLastName(String name) {
+        driver.findElement(lastName).sendKeys(name);
     }
 
     public WebElement getNameField() {
         return driver.findElement(firstName);
     }
+    public WebElement getLastNameField() {
+        return driver.findElement(lastName);
+    }
 
+    @Step("Получили кнопку submit")
     public WebElement getSubmitButton() {
         return driver.findElement(submitButton);
     }
